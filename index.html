@@ -1,20 +1,297 @@
-<!DOCTYPE html>
 <html>
+
 <head>
-	
-	<title>Deep Patel</title>
-
-	<link rel="stylesheet" href="lib/css/bootstrap.css">
-	<script src="lib/js/bootstrap.js"></script>
-
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="lib/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="lib/css/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="lib/css/font-awesome-4.7.0/css/font.css">
+    <link rel="stylesheet" type="text/css" href="lib/css/jquery-ui.min.css">
+    <script type="text/javascript" src="lib/javascript/handlebars-v4.0.5.js"></script>
+    <script type="text/javascript" src="lib/javascript/jquery-3.2.0.min.js"></script>
+    <script type="text/javascript" src="lib/javascript/bootstrap.min.js"></script>
+    <script type="text/javascript" src="lib/javascript/underscore-min.js"></script>
+    <script type="text/javascript" src="lib/javascript/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="lib/javascript/Chart.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="lib/css/dataTables.bootstrap.min.css">
+    <script type="text/javascript" src="lib/javascript/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="lib/javascript/dataTables.bootstrap.min.js"></script>
+    
+    <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+     -->
+    <link rel="stylesheet" type="text/css" href="static/css/main.css">
+    <link rel="stylesheet" type="text/css" href="static/css/branch.css">
 </head>
-<body>
-	<div class="container-fluid">
-	  <div class="row">
-		<button class="btn btn-default" onclick="hello()">Click Me</button>
-	  </div>
-	</div>
 
-	<script type="text/javascript" src="static/js/index.js"></script>
+<body>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand home" style="cursor: pointer;">
+                    <div>
+                        <div class="logoDiv"><img src="img/logo.png" class="logoImg"></div>
+                        <div class="collagename hidden-sm">Gujarat Power Engineering And Research Institute</div>
+                    </div>
+                </a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a class="branchSelector" branch="computer">Computer Engineering</a>
+                    </li>
+                    <li>
+                        <a class="branchSelector" branch="electrical">Electrical Engineering</a>
+                    </li>
+                    <li>
+                        <a class="branchSelector" branch="civil">Civil Engineering</a>
+                    </li>
+                    <li>
+                        <a class="branchSelector" branch="mechanical">Mechanical Engineering</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container-fluid dashboard">
+        <div class="alert alert-success" style="font-size: 17px"><i class="fa fa-trophy" aria-hidden="true"></i> Top Students in Collage</div>
+        <div class="raw collageTopDiv"></div>
+        <div class="dashboardBracnchDiv"></div>
+    </div>
+    <div class="contant" style="display: none;">
+        <div style="margin-left: 45px">
+            <div class="departmentlogo"><i class="fontawosemeIcon" aria-hidden="true"></i></div>
+            <div class="departmenttext"></div>
+            <div class="pull-right home" title="Home" style="font-size: 30px;margin-right: 73px;color: #00625a;"><i class="fa fa-home" aria-hidden="true"></i></div>
+        </div>
+        <hr style="margin-top: 0px;" />
+        <div class="center searchDiv">
+            <div class="input-group">
+                <input id="searchinput" type="text" class="form-control" placeholder="Search Enrollment or Name">
+                <span class="input-group-btn">
+                    <button class="btn btn-secondary searchbtn" type="button">Search</button>
+                 </span>
+            </div>
+            <div class="studentDataDiv" style="display: none;">
+                <hr/>
+                <div class="studentheader">
+                    <div class="studentName pull-right"></div>
+                    <div class="studentEnroll pull-left"></div>
+                </div>
+                <div class="stdgraph" style="margin-top: 20px;">
+                    <div class="container">
+                        <div class="row-height">
+                            <div class="row">
+                                <div class="col-md-6 pull-left card">
+                                    <canvas id="spiGraph"></canvas>
+                                </div>
+                                <div class="col-md-6 pull-right card">
+                                    <canvas id="backlogGraph"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="studentResultsDiv"></div>
+            </div>
+        </div>
+        <div class="batchDataDiv">
+            <div class="center yeardiv"></div>
+            <div class="center semdiv"></div>
+            <div class="center resultdiv" style="display: none;">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 semHeader">
+                            <div class="batchName pull-right"></div>
+                            <div class="semName pull-left"></div>
+                        </div>
+                        <div class="col-md-12 semStatistics">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-4 card">
+                                        <table class="table table-striped table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th>Rank</th>
+                                                    <th>Enrollment</th>
+                                                    <th>Name</th>
+                                                    <th>SPI</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="topSemTable">
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="col-md-8 card pull-right" style="width:400px;height: 400px;">
+                                        <canvas id="totalbacklogGraph" width="300" height="300"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12" style="font-size: 25px;color: #00625a;margin-top: 25px;">
+                            Subject Wise Results
+                            <hr style="margin-top: 10;margin-bottom: 0px;" />
+                        </div>
+                        <div class="col-md-12" style="margin-top: 25px;">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div style="background-color: white;color: #00625a;display: inline-block;">Views : </div>
+                                        <div class="btn-group" role="group">
+                                            <button type="button" class="btn btn-default graphViewBtn" style="color: white;
+    background-color: #00625a;"><i class="fa fa-bar-chart" aria-hidden="true" style="padding-right: 2px;"></i> Graph</button>
+                                            <button type="button" class="btn btn-default tableViewBtn" style="color: white;
+    background-color: #00625a;"><i class="fa fa-table" aria-hidden="true" style="padding-right: 2px;"></i> Table</button>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 tableView" style="display: none;">
+                                        <table class="table table-striped table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th>Subject</th>
+                                                    <th>AA</th>
+                                                    <th>AB</th>
+                                                    <th>BB</th>
+                                                    <th>BC</th>
+                                                    <th>CC</th>
+                                                    <th>CD</th>
+                                                    <th>DD</th>
+                                                    <th>FF</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="subjectSemTable">
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="col-md-12 graphView">
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col-md-4 subjectGraphViewBtnDiv">
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <div class="subjectGraphViewName">
+                                                    </div>
+                                                    <div>
+                                                        <canvas id="subjectGraphViewGraph"></canvas>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12" style="font-size: 25px;color: #00625a;margin-top: 25px;">
+                            All Students
+                            <hr style="margin-top: 10;margin-bottom: 0px;" />
+                        </div>
+                        <div class="col-md-12" style="margin-top: 5px;">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-12" style="margin-top: 15px;margin-bottom: 15px;">
+                                        <div style="background-color: white;color: #00625a;display: inline-block;">Views : </div>
+                                        <div class="btn-group" role="group">
+                                            <button type="button" class="btn btn-default listViewBtn" style="color: white;
+    background-color: #00625a;"><i class="fa fa-list-alt" aria-hidden="true"></i> List</button>
+                                            <button type="button" class="btn btn-default datatableViewBtn" style="color: white;
+    background-color: #00625a;"><i class="fa fa-table" aria-hidden="true" style="padding-right: 2px;"></i> Table</button>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="panel-group" id="semStudentResultDiv">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12" style="overflow: auto;">
+                                        <div class="panel-group" id="semStudentResultDatatable" style="display: none">
+                                            <table id="sem-datatable" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                                                <thead class="sem-datatable-header"></thead>
+                                                <tbody class="sem-datatable-body"></tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 RemedialDiv" style="font-size: 25px;color: #00625a;margin-top: 25px; display: none;">
+                            Remedial Exam
+                            <hr style="margin-top: 10;margin-bottom: 0px;" />
+                        </div>
+                        <div class="col-md-12 RemedialDiv" style="margin-top: 10px; display: none;">
+                            <div id="remidialExamResultDiv"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div style="height: 100px;padding-top: 35px">
+            <p class="text-center">Developed and Design by <a href="https://www.linkedin.com/in/deeppatel234/" target="_blank" class="myname">Deep Patel</a></p>
+            <p class="text-center">Made With <i class="fa fa-heart" aria-hidden="true" style="padding-right: 4px;"></i>for GPERI</p>
+        </div>
+    </div>
+    <div id="templateLoader"></div>
+    <script type="text/javascript" src="static/template/registerHelper.js"></script>
+    <script type="text/javascript" src="static/js/dashboard.js"></script>
+    <script type="text/javascript" src="static/js/graph.js"></script>
+    <script type="text/javascript" src="static/js/branch.js"></script>
+    <!-- <script type="text/javascript">
+    window._urq = window._urq || [];
+    _urq.push(['initSite', '72fbcd1c-4148-4f0c-98fb-c55d6b9f638c']);
+    (function() {
+        var ur = document.createElement('script');
+        ur.type = 'text/javascript';
+        ur.async = true;
+        ur.src = ('https:' == document.location.protocol ? 'https://cdn.userreport.com/userreport.js' : 'http://cdn.userreport.com/userreport.js');
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(ur, s);
+    })();
+    </script> -->
+    <script>
+    window.intercomSettings = {
+        app_id: "wod56qrm"
+    };
+    </script>
+    <script>
+    (function() {
+        var w = window;
+        var ic = w.Intercom;
+        if (typeof ic === "function") {
+            ic('reattach_activator');
+            ic('update', intercomSettings);
+        } else {
+            var d = document;
+            var i = function() {
+                i.c(arguments)
+            };
+            i.q = [];
+            i.c = function(args) {
+                i.q.push(args)
+            };
+            w.Intercom = i;
+
+            function l() {
+                var s = d.createElement('script');
+                s.type = 'text/javascript';
+                s.async = true;
+                s.src = 'https://widget.intercom.io/widget/wod56qrm';
+                var x = d.getElementsByTagName('script')[0];
+                x.parentNode.insertBefore(s, x);
+            }
+            if (w.attachEvent) {
+                w.attachEvent('onload', l);
+            } else {
+                w.addEventListener('load', l, false);
+            }
+        }
+    })()
+    </script>
 </body>
+
 </html>

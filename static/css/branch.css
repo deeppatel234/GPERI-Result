@@ -1,0 +1,280 @@
+.contant{
+	min-height: 500px;
+}
+
+@media (max-width: 450px){
+	.departmentlogo{
+		color: transparent;
+	}	
+}
+
+.departmentlogo{
+	display: inline-block;
+	font-size: 28px;
+}
+
+.departmenttext{
+	display: inline-block;
+	font-size: 30px;
+	color: #005a4d;
+}
+
+.logoImgdept{
+	width: 90px;
+}
+
+input[type="text"]:focus{
+	border-color: rgba(0, 94, 82, 0.66);
+	//box-shadow: 0 1px 1px rgba(0, 94, 82, 0.66) inset, 0 0 8px rgba(0, 94, 82, 0.66);
+}
+
+.ui-state-active,
+.ui-widget-content .ui-state-active,
+.ui-widget-header .ui-state-active,
+a.ui-button:active,
+.ui-button:active,
+.ui-button.ui-state-active:hover {
+	background-color: #00625a !important;
+	border-color: transparent ;
+}
+
+.center {
+    margin: auto;
+    padding: 10px;
+    width: 89%;
+}
+
+ul.ui-autocomplete.ui-menu{
+	max-height: 400px;
+	overflow-y: scroll;
+	overflow-x: hidden;
+}
+
+
+.yearbtn {
+    height: 100px;
+    width: 180px;
+    font-size: 20px;
+    color: white;
+    background-color: #00625a;
+    font-family: sans-serif;
+    position: relative;
+    border: none;
+    border-radius: 0px;
+}
+
+.sembtn{
+	height: 50px;
+    width: 126px;
+    font-size: 20px;
+    color: white;
+    background-color: #00625a;
+    font-family: sans-serif;
+    position: relative;
+    border: none;
+    border-radius: 0px;
+}
+
+.semCap{
+	font-size: 38px;
+    position: absolute;
+    color: rgba(221, 221, 221, 0.3);
+    right: 0px;
+    top: 9px;
+    left: 88px;
+}
+
+.yearbtn:hover{
+	background-color: rgb(2, 66, 61);
+    color: white;
+}
+
+.yearCap{
+	font-size: 69px;
+    position: absolute;
+    color: rgba(221, 221, 221, 0.3);
+    right: 0px;
+    top: 31px;
+    left: 92px;
+}
+
+.fa-graduation-cap:focus{
+	padding-right: 0px;
+}
+
+.yeardiv > button{
+	margin-left: 7px;
+	margin-top: 7px;
+}
+
+.semdiv > button{
+	margin-left: 7px;
+	margin-top: 7px;
+}
+
+.semCap > i {
+    padding-right: 0px !important;
+}
+
+.yearCap > i {
+    padding-right: 0px !important;
+}
+
+.searchbtn{
+	background-color: #005e52;
+    color: white;
+}
+
+.backbtn{
+	background-color: transparent;
+    border: none;
+    font-size: 40px;
+    color: #00625a;
+    margin-top: 0px;
+    margin-left: 0px;
+    padding-right: 0px;
+}
+
+.studentDataDiv{
+    width: 100%;
+    margin-top: 20px;
+}
+
+.studentName , .studentEnroll{
+    font-size: 35px;
+    color: #00625a;
+}
+
+.studentResultsDiv{
+    margin-top: 50px;
+}
+
+.panel{
+    margin-bottom: 5px;
+}
+
+.studentSemBtn{
+    height: 100px;
+    margin-top: 10px;
+    width: 285px;
+    font-size: 16px;
+    color: white;
+    background-color: #00625a;
+    font-family: sans-serif;
+    position: relative;
+    border: none;
+    border-radius: 0px;
+}
+
+.semIcon{
+    font-size: 91px;
+    position: absolute;
+    color: rgba(221, 221, 221, 0.2);
+    right: 0px;
+    top: 9px;
+    left: 178px;
+}
+
+.semIcon > i {
+    padding-right: 0px !important;
+}
+
+.studentBackBtn{
+    background-color: transparent;
+    border: none;
+    font-size: 40px;
+    color: #00625a;
+    margin-top: 0px;
+    margin-left: 0px;
+    padding-right: 0px;
+    position: absolute;
+    top: 271px;
+    left: 23px;
+}
+
+
+.semHeader{
+    font-size: 35px;
+    color: #00625a;
+}
+
+.semStatistics{
+    margin-top: 30px;
+}
+
+#totalbacklogGraph{
+    height: 200px;
+}
+
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+    background-color: #23716b;
+    color: white;
+}
+
+.tableView , .graphView{
+    margin-top: 15px;
+}
+
+
+.subjectGraphViewBtn{
+    height: 61px;
+    margin-top: 2px;
+    width: 360px;
+    font-size: 16px;
+    color: #00625a;
+    background-color: #f5f5f5;
+    font-family: sans-serif;
+    position: relative;
+    border: none;
+    border-radius: 0px;
+}
+
+.subjectGraphViewName{
+    font-size: 20px;
+    color: #00625a;
+}
+
+.myname{
+    text-decoration: underline;
+}
+
+.myname:hover{
+    color: #fff;
+}
+
+.myname:visited{
+    color: #fff;
+}
+
+.studentheader{
+    width: 100%;
+    height: 40px;
+}
+
+table.dataTable thead th {
+    position: relative;
+    background-image: none !important;
+}
+ 
+table.dataTable thead th.sorting:after,
+table.dataTable thead th.sorting_asc:after,
+table.dataTable thead th.sorting_desc:after {
+    position: absolute;
+    top: 12px;
+    right: 8px;
+    display: block;
+    font-family: FontAwesome;
+}
+
+table.dataTable thead th.sorting:after {
+    content: "\f0dc";
+    color: #191717;
+    font-size: 0.8em;
+    padding-top: 0.12em;
+}
+table.dataTable thead th.sorting_asc:after {
+    content: "\f160";
+}
+table.dataTable thead th.sorting_desc:after {
+    content: "\f161"
+}

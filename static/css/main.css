@@ -1,0 +1,84 @@
+.navbar {
+	min-height:95px !important
+}
+
+.navbar-nav{
+	padding-top: 15px;
+}
+.navbar-brand{
+	padding-top: 0px;
+    padding-bottom: 0px;
+    height: 95px;
+    padding-right: 0px;
+}
+.logoImg{
+	height: 85px;
+	padding-top: 8px;
+}
+
+.img-responsive {
+    margin: 0 auto;
+}
+
+td{
+	text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.departmenticon{
+	width: 150px;
+}
+.logoDiv{
+	display: inline-block;
+}
+
+.collagename{
+	font-size: 20px;
+	color: #02584f;
+	display: inline-block;
+}
+
+.panel-footer{
+	background-color: #fff;
+}
+@media (max-width: 1220px){
+	.collagename{
+		display: none;
+	}	
+}
+
+.footer{
+	background-color: #075f59;
+	color: white;
+}
+
+.panel-heading{
+	font-size: 17px;
+}
+
+i{
+	padding-right: 10px;
+}
+
+p {
+    margin: 0 0 0px;
+}
+
+.depticon{
+	color: #005c50;
+	font-size: 116px;
+}
+
+.dashboardBracnchName,.dashboardBracnchName:hover{
+	color: white;
+	font-size: 15px;
+	cursor: pointer;
+}
+
+.branchSelector{
+	cursor: pointer;
+}
+
+.crowd-shortcut{
+	margin-left: 50px;
+}

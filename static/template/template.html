@@ -1,0 +1,172 @@
+<script id="dashboard-branch-template" type="text/x-handlebars-template">
+    <div class="col-md-3">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <a class="dashboardBracnchName branchSelector" branch="{{attr this.data.name}}">{{this.data.name}}</a>
+            </div>
+            <div class="panel-body branchSelector" branch="{{attr this.data.name}}">
+                <p class="text-center depticon"><i class="dashboardBranchIcon {{this.data.icon}}" aria-hidden="true"></i></p>
+            </div>
+            <div class="panel-footer">
+                {{#each this.data.data}}
+                <div class="alert alert-info">By {{upper @key}}</div>
+                <table class="table">
+                    <tbody>
+                        {{#each this}}
+                        <tr title="{{this.name}} | {{this.sem}}">
+                            <td>{{inc @index}}</td>
+                            <td>{{this.enrollment}}</td>
+                            <td>{{grade this}}</td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+</script>
+<script id="student-result-template" type="text/x-handlebars-template">
+    <div class="container">
+        <div class="row">
+            {{#each data}}
+            <div class="col-md-3">
+                <button class="studentSemBtn" data="sem{{@index}}">
+                    {{this.sem}}
+                    <br/> SPI : {{round this.spi}} | CPI : {{round this.cpi}} {{#if this.cgpa}} | CGAP : {{round this.cgpa}} {{/if}}
+                    <div class='semIcon'><i class="fa fa-line-chart" aria-hidden="true"></i></div>
+                </button>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            {{#each data}}
+            <div class="col-md-12 sem{{@index}}data" style="display: none;">
+                <div class="card" style="margin-top: 25px">
+                    <div style="font-size: 23px;color: #00625a;">{{this.sem}}</div>
+                    <hr/>
+                    <div class="card-block">
+                        <table class="table">
+                            <thead class="thead-inverse">
+                                <tr class="">
+                                    <th>SUBJECT CODE</th>
+                                    <th>SUBJECT NAME</th>
+                                    <th>Theory Grade
+                                        <br/>ESE | PA | TOTAL</th>
+                                    <th>Practical Grade
+                                        <br/>ESE | PA | TOTAL</th>
+                                    <th>Subject Grade</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{#each this.subject}}
+                                <tr>
+                                    <th scope="row">{{this.code}}</th>
+                                    <td>{{this.name}}</td>
+                                    <td>{{this.theoryese}} | {{this.theorypa}} | {{this.theorytotal}}</td>
+                                    <td>{{this.practicalese}} | {{this.practicalpa}} | {{this.practicaltotal}}</td>
+                                    <td>{{this.subjectgrade}}</td>
+                                </tr>
+                                {{/each}}
+                            </tbody>
+                        </table>
+                        {{#if this.currentsemblock}}
+                        <div class="alert alert-danger" style="height: 50px;font-size: 18px;">
+                            {{else}}
+                            <div class="alert alert-success" style="height: 50px;font-size: 18px;">
+                                {{/if}}
+                                <div class="pull-left" style="display: inline-block;">
+                                    Current Sem. Backlog: {{this.currentsemblock}} | Total Backlog: {{this.totalblock}}
+                                </div>
+                                <div class="pull-right" style="display: inline-block;">
+                                    SPI: {{round this.spi}} | CPI: {{round this.cpi}} {{#if this.cgpa}} | CGAP : {{round this.cgpa}} {{/if}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+</script>
+<script id="sem-result-template" type="text/x-handlebars-template">
+    {{#each data}}
+    <div class="panel panel-default">
+        <div class="panel-heading" style="color: #075f59;background-color: white;">
+            <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#semStudentResultDiv" href="#{{@index}}">
+                    <div style="display: inline-block;width: 100%;">
+                    <div style="float: left;">
+                        {{this.enrollment}} | {{this.name}}
+                    </div> 
+                    <div style="float: right;">
+                        SPI : {{round this.spi}} | CPI : {{round this.cpi}} {{#if this.cgpa}} | CGAP : {{round this.cgpa}} {{/if}}
+                    </div>
+                    </div>
+                    </a>
+                  </h4>
+        </div>
+        <div id="{{@index}}" class="panel-collapse collapse">
+            <div class="panel-body">
+                <table class="table">
+                    <thead class="thead-inverse">
+                        <tr>
+                            <th>SUBJECT CODE</th>
+                            <th>SUBJECT NAME</th>
+                            <th>Theory Grade
+                                <br/>ESE | PA | TOTAL</th>
+                            <th>Practical Grade
+                                <br/>ESE | PA | TOTAL</th>
+                            <th>Subject Grade</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each this.subject}}
+                        <tr>
+                            <th scope="row">{{this.code}}</th>
+                            <td>{{this.name}}</td>
+                            <td>{{this.theoryese}} | {{this.theorypa}} | {{this.theorytotal}}</td>
+                            <td>{{this.practicalese}} | {{this.practicalpa}} | {{this.practicaltotal}}</td>
+                            <td>{{this.subjectgrade}}</td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+            {{#if this.currentsemblock}}
+            <div class="alert alert-danger" style="height: 50px;font-size: 18px;">
+                {{else}}
+                <div class="alert alert-success" style="height: 50px;font-size: 18px;">
+                    {{/if}}
+                    <div class="pull-left" style="display: inline-block;">
+                        Current Sem. Backlog: {{this.currentsemblock}} | Total Backlog: {{this.totalblock}}
+                    </div>
+                    <div class="pull-right" style="display: inline-block;">
+                        SPI: {{round this.spi}} | CPI: {{round this.cpi}} {{#if this.cgpa}} | CGAP : {{round this.cgpa}} {{/if}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+</script>
+<script id="dashboard-top-template" type="text/x-handlebars-template">
+    {{#each data}}
+    <div class="col-md-4">
+        <div class="alert alert-info">By {{upper @key}}</div>
+        <table class="table">
+            <tbody>
+                {{#each this}}
+                <tr title="{{this.name}} | {{this.sem}}">
+                    <td>{{inc @index}}</td>
+                    <td>{{branch this.branch}}
+                    <td>{{this.enrollment}}</td>
+                    <td>{{grade this}}</td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+    {{/each}}
+</script>

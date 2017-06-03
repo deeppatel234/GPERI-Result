@@ -1,4 +1,4 @@
-this.serverUrl = "http://localhost:3000";
+this.serverUrl = "https://shrouded-falls-73362.herokuapp.com";
 
 var backbtn = function() {
     $(".semdiv").empty();

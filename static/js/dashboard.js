@@ -6,7 +6,7 @@ $(document).ready(function() {
         mechanical: { name: "MECHANICAL ENGINEERING", icon: "fa fa-cog" }
     }
 
-    this.serverUrl = "http://localhost:3000";
+    this.serverUrl = "https://shrouded-falls-73362.herokuapp.com";
     var self = this;
     
     $('.collageTopDiv').empty();

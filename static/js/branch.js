@@ -272,7 +272,7 @@ $(".searchbtn").click(function() {
                 var studentSpi = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0, 8: 0 };
                 var studentBacklog = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0, 8: 0 };
                 _.each(data, function(value) {
-                    if(value.indexOf("Regular") != -1){
+                    if(value.sem.indexOf("Regular") != -1){
                         var sem = value.sem;
                         sem = sem.replace("BE SEM ", "");
                         sem = sem[0];

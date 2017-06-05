@@ -30,4 +30,10 @@ Handlebars.registerHelper("attr", function(value, options) {
     return value.replace(" ENGINEERING","").toLowerCase();
 });
 
+Handlebars.registerHelper("semkey", function(value, options) {
+    console.log("value", value);
+    return value._id;
+});
+
+
 $("#templateLoader").load("static/template/template.html");

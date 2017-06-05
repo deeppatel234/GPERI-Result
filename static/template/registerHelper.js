@@ -31,7 +31,6 @@ Handlebars.registerHelper("attr", function(value, options) {
 });
 
 Handlebars.registerHelper("semkey", function(value, options) {
-    console.log("value", value);
     return value._id;
 });
 

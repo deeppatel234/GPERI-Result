@@ -96,7 +96,7 @@
     <div class="panel panel-default">
         <div class="panel-heading" style="color: #075f59;background-color: white;">
             <h4 class="panel-title">
-                    <a data-toggle="collapse" data-parent="#semStudentResultDiv" href="#{{@index}}">
+                    <a data-toggle="collapse" data-parent="#semStudentResultDiv" href="#{{semkey this}}">
                     <div style="display: inline-block;width: 100%;">
                     <div style="float: left;">
                         {{this.enrollment}} | {{this.name}}
@@ -108,7 +108,7 @@
                     </a>
                   </h4>
         </div>
-        <div id="{{@index}}" class="panel-collapse collapse">
+        <div id="#{{semkey this}}" class="panel-collapse collapse">
             <div class="panel-body">
                 <table class="table">
                     <thead class="thead-inverse">
